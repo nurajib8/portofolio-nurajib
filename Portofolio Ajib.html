@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nur Ajib | Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* === VARIABEL WARNA (TEMA DARK & NEON CYAN) === */
+        :root {
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef; /* Neon Cyan */
+        }
+
+        /* === RESET & DASAR === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 9%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 25px;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .navbar a {
+            font-size: 17px;
+            color: var(--text-color);
+            margin-left: 35px;
+            transition: .3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: var(--main-color);
+        }
+
+        /* === STRUKTUR UMUM === */
+        section {
+            min-height: 100vh;
+            padding: 100px 9% 50px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+        }
+
+        span {
+            color: var(--main-color);
+        }
+
+        /* === HERO SECTION === */
+        .home {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .home-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .home-content p {
+            font-size: 16px;
+            margin: 20px 0 40px;
+            color: #ccc;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 2px solid var(--main-color);
+            border-radius: 50%;
+            font-size: 20px;
+            color: var(--main-color);
+            margin-right: 15px;
+            transition: .5s ease;
+        }
+
+        .social-media a:hover {
+            background: var(--main-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--main-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--main-color);
+            border-radius: 40px;
+            box-shadow: 0 0 15px var(--main-color);
+            font-size: 16px;
+            color: var(--bg-color);
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: .5s ease;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 30px var(--main-color);
+            background: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+        }
+
+        /* Efek Bingkai Hexagon */
+        .home-img {
+            filter: drop-shadow(0 0 25px var(--main-color));
+        }
+
+        .hexagon {
+            width: 400px;
+            height: 400px;
+            background-color: var(--main-color);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hexagon img {
+            width: 385px;
+            height: 385px;
+            object-fit: cover;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* === ABOUT SECTION === */
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            background: var(--second-bg-color);
+        }
+
+        .about-img {
+            filter: drop-shadow(0 0 20px var(--main-color));
+        }
+
+        .about-content h2 {
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .about-content h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            margin: 20px 0 30px;
+            color: #ccc;
+        }
+
+        /* === SKILLS SECTION === */
+        .skills {
+            background: var(--bg-color);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-box {
+            background: var(--second-bg-color);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: .5s ease;
+        }
+
+        .skill-box:hover {
+            border-color: var(--main-color);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--main-color);
+        }
+
+        .skill-box i {
+            font-size: 50px;
+            color: var(--main-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-box h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .skill-box ul {
+            list-style: none;
+            color: #ccc;
+            font-size: 15px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .skill-box ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .skill-box ul li::before {
+            content: "▹";
+            position: absolute;
+            left: -20px;
+            color: var(--main-color);
+        }
+
+        /* === PORTFOLIO (PROJECT & EXPERIENCE) SECTION === */
+        .portfolio {
+            background: var(--second-bg-color);
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-box {
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px; 
+            background: var(--bg-color); 
+            cursor: pointer; 
+        }
+
+        /* Ikon tengah kartu */
+        .box-icon {
+            font-size: 100px;
+            color: var(--main-color);
+            text-shadow: 0 0 20px var(--main-color);
+            transition: .5s ease;
+        }
+
+        .portfolio-box:hover .box-icon, .portfolio-box.active .box-icon {
+            transform: scale(1.1) translateY(-20px);
+        }
+
+        /* Overlay cyan */
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8), var(--main-color));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 40px;
+            transform: translateY(100%);
+            transition: .5s ease;
+            opacity: 0;
+        }
+
+        .portfolio-box:hover .portfolio-layer, .portfolio-box.active .portfolio-layer {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .portfolio-layer h4 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--bg-color);
+            margin-bottom: 5px;
+        }
+
+        .portfolio-layer p {
+            font-size: 14px;
+            color: var(--bg-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Tombol klik panah di dalam kartu */
+        .open-modal {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background: var(--text-color);
+            border-radius: 50%;
+            color: var(--bg-color);
+            font-size: 20px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .open-modal:hover {
+            transform: scale(1.1);
+            background: var(--bg-color);
+            color: var(--main-color);
+        }
+
+        /* === MODAL POP-UP STYLE === */
+        .modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--second-bg-color);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            border: 2px solid var(--main-color);
+            box-shadow: 0 0 30px rgba(0, 238, 255, 0.2);
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: var(--text-color);
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .close-btn:hover {
+            color: var(--main-color);
+        }
+
+        .modal-content h3 {
+            color: var(--main-color);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .modal-content h4 {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .modal-content ul li::before {
+            content: "\f058"; /* Ikon centang */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--main-color);
+        }
+
+        /* === CONTACT SECTION === */
+        .contact {
+            background: var(--bg-color);
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 16px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* === RESPONSIVE UTUK HP === */
+        @media (max-width: 800px) {
+            .home, .about { flex-direction: column; text-align: center; gap: 40px; }
+            .about-content h2 { text-align: center; }
+            .hexagon { width: 300px; height: 300px; }
+            .hexagon img { width: 285px; height: 285px; }
+            header { padding: 20px 5%; }
+            section { padding: 100px 5% 50px; }
+            .modal-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Portfolio.</a>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Project & Exp</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Nur Ajib</h1>
+            <h3>And I'm a <span>Data Analyst</span></h3>
+            <p>I transform complex datasets into actionable business insights. Eager to uncover hidden risks and drive operational excellence through data-driven decisions.</p>
+            
+            <div class="social-media">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <a href="https://docs.google.com/document/d/1AvwROxvzxmfzPvEkrzvlVK8I3aRuG_-Lqia5gSr08q0/edit?usp=sharing" target="_blank" class="btn">Download CV</a>
+        </div>
+
+        <div class="home-img">
+            <div class="hexagon">
+                <img src="profil.png" alt="Nur Ajib">
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <div class="hexagon" style="width: 320px; height: 320px;">
+                <img src="profil.png" alt="Nur Ajib" style="width: 305px; height: 305px;">
+            </div>
+        </div>
+
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Data & Operation Analyst</h3>
+            <p>My foundational experience in safety management and operations has deeply ingrained in me the value of using data to uncover hidden risks and drive operational excellence.</p>
+            <p>A recent graduate of the RevoU Full Stack Data Analytics program, I connect disparate datasets using Python, SQL, Tableau, and Power BI into impactful dashboards and strategic narratives that guide stakeholders.</p>
+            <a href="#portfolio" class="btn">Read More</a>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <h2 class="heading">Technical <span>Skillset</span></h2>
+        
+        <div class="skills-container">
+            <div class="skill-box">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data Visualization</h3>
+                <ul>
+                    <li>Tableau & Power BI</li>
+                    <li>Advanced Excel (Pivot, Macros)</li>
+                    <li>Google Sheets Automation</li>
+                    <li>Safety KPI Dashboards</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Data Analysis</h3>
+                <ul>
+                    <li>SQL (PostgreSQL / BigQuery)</li>
+                    <li>Python (Pandas, NumPy)</li>
+                    <li>Exploratory Data Analysis (EDA)</li>
+                    <li>Statistical Analysis</li>
+                </ul>
+            </div>
+
+            <div class="skill-box">
+                <i class="fas fa-cogs"></i>
+                <h3>QHSE & Operations</h3>
+                <ul>
+                    <li>Root Cause Analysis (RCA)</li>
+                    <li>Safety Management Systems</li>
+                    <li>Incident Investigation</li>
+                    <li>Databricks Automation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Project & <span>Experience</span></h2>
+
+        <div class="portfolio-container">
+            
+            <div class="portfolio-box">
+                <div class="box-icon"><i class="fas fa-plane-departure"></i></div>
+                <div class="portfolio-layer">
+                    <h4>Flight Delay Analysis</h4>
+                    <p>RevoU Data Analytics Project</p>
+                    <a href="#" class="open-modal" data-modal="modal-1"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <div class="box-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="portfolio-layer">
+                    <h4>Safety Evaluator</h4>
+                    <p>PT Asian Bulk Logistics</p>
+                    <a href="#" class="open-modal" data-modal="modal-2"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <div class="box-icon"><i class="fas fa-gas-pump"></i></div>
+                <div class="portfolio-layer">
+                    <h4>Reservoir Engineer Intern</h4>
+                    <p>PT Petrochina Jabung Ltd</p>
+                    <a href="#" class="open-modal" data-modal="modal-3"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <div class="box-icon"><i class="fas fa-globe-asia"></i></div>
+                <div class="portfolio-layer">
+                    <h4>Geoscience Services Intern</h4>
+                    <p>PT Elnusa Tbk</p>
+                    <a href="#" class="open-modal" data-modal="modal-4"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-box">
+                <div class="box-icon"><i class="fas fa-industry"></i></div>
+                <div class="portfolio-layer">
+                    <h4>Petroleum Engineering Intern</h4>
+                    <p>PT PERTAMINA EP</p>
+                    <a href="#" class="open-modal" data-modal="modal-5"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Strategic Plan: Reducing Flight Delays & Improving CSAT</h3>
+            <h4>RevoU Full Stack Data Analytics | Dec 2025 - Jan 2026</h4>
+            <ul>
+                <li>Analyzed 5.8 million flight records using Python (G-Colab) and Tableau to identify operational bottlenecks causing a 17.9% national delay rate.</li>
+                <li>Identified that delays accumulate significantly after 14:00 PM, disproportionately driven by three underperforming low-cost carriers.</li>
+                <li>Developed a "PM Buffer" strategy to reduce delays below 15% and increase CSAT scores from 2 to 4 points.</li>
+                <li>Recommended targeted operational audits for specific carriers to improve performance by 5-10% and stabilize the national fleet average.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Safety Evaluator</h3>
+            <h4>PT Asian Bulk Logistics | Nov 2024 - Present</h4>
+            <ul>
+                <li>Engineered Integrated Safety Data Automation & Analytics by processing data in Databricks and designing Tableau dashboards, allowing regional bureaus to monitor lagging and leading QHSE indicators in real-time.</li>
+                <li>Produced periodic compliance reports aligning government (ESDM, SMKP) and international (ISO 45001, ISM Code) standards, reinforcing audit readiness across regions.</li>
+                <li>Developed RCA reports for incidents and near-misses, applying statistical methods to uncover recurring patterns, recommend preventive controls, and support regional operations.</li>
+                <li>Formulated analytical safety improvement initiatives and proposed integration steps, embedding safety controls into daily operational workflows across regional bureaus and stakeholders.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Reservoir Engineer Intern</h3>
+            <h4>PT Petrochina International Jabung Ltd. | Feb 2024 - Apr 2024</h4>
+            <ul>
+                <li>Conducted a comprehensive study titled "Reserve Evaluation and Production Forecasting with Infill Drilling Scenarios in the XXX Field" to identify viable reserves and deliver actionable data for future drilling investments.</li>
+                <li>Utilized the Decline Curve Analysis (DCA) method to evaluate reserves and forecast future production.</li>
+                <li>Developed production forecasting models specifically focused on infill drilling scenarios to optimize field recovery.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Geoscience Services Intern</h3>
+            <h4>PT Elnusa Tbk | July 2023 - August 2023</h4>
+            <ul>
+                <li>Assisted the Geoscience Services department in executing daily operational tasks and technical projects.</li>
+                <li>Collaborated within a multidisciplinary geoscience team to execute daily operational tasks.</li>
+                <li>Streamlining technical project delivery and supporting the company's overall service operations.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Petroleum Engineering Intern</h3>
+            <h4>PT PERTAMINA EP | May 2023 - June 2023</h4>
+            <ul>
+                <li>Analyzed well stimulation programs to enhance production efficiency, specifically evaluating the technical outcomes and viability of the Matrix Acidizing method.</li>
+                <li>Leveraged analytical and financial analysis skills to assess project viability and technical outcomes.</li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+        <p>Interested in collaborating or have questions about my data projects? Feel free to reach out via email or connect with me on LinkedIn.</p>
+        
+        <div class="social-media" style="margin-top: 20px;">
+            <a href="mailto:nurajib8@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/6285691066160" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/nur-ajib-6abb9025a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ambil semua tombol pembuka modal dan semua modal
+            const modalBtns = document.querySelectorAll('.open-modal');
+            const closeBtns = document.querySelectorAll('.close-btn');
+            const modals = document.querySelectorAll('.modal');
+
+            // Fungsi Buka Modal
+            modalBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Mencegah layar melompat ke atas
+                    const modalId = btn.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'flex';
+                });
+            });
+
+            // Fungsi Tutup Modal via Tombol X
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.modal').style.display = 'none';
+                });
+            });
+
+            // Fungsi Tutup Modal jika area luar kotak di-klik
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
