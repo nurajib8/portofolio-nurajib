@@ -268,12 +268,14 @@
         }
 
         .portfolio-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
         }
 
         .portfolio-box {
+            width: 320px; /* Memastikan ukurannya tetap seragam */
             position: relative;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -718,3 +720,4 @@
     </script>
 </body>
 </html>
+
